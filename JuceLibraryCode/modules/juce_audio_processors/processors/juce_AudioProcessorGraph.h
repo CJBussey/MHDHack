@@ -347,23 +347,39 @@ public:
         
     public:
         
+        OSCProcessor() : m_midiNote(0) {}
+        
         void processBlock(MidiBuffer& rMidiMessages, int blockSize)
         {
-            
+            while (1 /*getNextOSCEvent(rFrequency, rTimeStamp)*/)
             {
-                MidiMessage m = MidiMessage::noteOn(1, 60, (uint8) 127);
-                rMidiMessages.addEvent(m, 0);
-            }
-            
-            {
-                MidiMessage m = MidiMessage::noteOff(1, 60, (uint8) 127);
-                rMidiMessages.addEvent(m, blockSize - 1);
+                int midiNote = frequencyToMidiNote(0 /*rFrequency*/);
+                
+                if (midiNote != m_midiNote)
+                {
+                    if (m_midiNote != 1)
+                    {
+                        MidiMessage m = MidiMessage::noteOff(1, m_midiNote);
+                        rMidiMessages.addEvent(&m, 0/*rFrequency*/, 0/*rTimeStamp*/);
+                    }
+                        
+                    if (midiNote != -1)
+                    {
+                        MidiMessage m = MidiMessage::noteOn(1, m_midiNote, (uint8)100 /*fixed*/);
+                        rMidiMessages.addEvent(&m, 0/*rFrequency*/, 0/*rTimeStamp*/);
+                    }
+                    
+                    m_midiNote = midiNote;
+                }
             }
         }
         
+    private:
+        int m_midiNote;
+        
         int frequencyToMidiNote(float frequency)
         {
-            return (frequency > 0.f) ? round(69 + 12 * log2(frequency/440.f)) : -1;
+            return (frequency > 8.f /*C1*/) ? round(69 + 12 * log2(frequency/440.f)) : -1;
         }
         
     };
