@@ -97,6 +97,7 @@ public:
     static const int midiChannelNumber;
     uint32 pluginNodeId;
     uint32 inputId;
+    uint32 oscId;
     uint32 outputId;
 
 private:

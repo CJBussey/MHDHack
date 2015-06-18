@@ -25,7 +25,6 @@
 #ifndef JUCE_AUDIOPROCESSORGRAPH_H_INCLUDED
 #define JUCE_AUDIOPROCESSORGRAPH_H_INCLUDED
 
-
 //==============================================================================
 /**
     A type of AudioProcessor which plays back a graph of other AudioProcessors.
@@ -343,6 +342,31 @@ public:
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioGraphIOProcessor)
     };
 
+    class OSCProcessor
+    {
+        
+    public:
+        
+        void processBlock(MidiBuffer& rMidiMessages, int blockSize)
+        {
+            
+            {
+                MidiMessage m = MidiMessage::noteOn(1, 60, (uint8) 127);
+                rMidiMessages.addEvent(m, 0);
+            }
+            
+            {
+                MidiMessage m = MidiMessage::noteOff(1, 60, (uint8) 127);
+                rMidiMessages.addEvent(m, blockSize - 1);
+            }
+        }
+        
+        
+    };
+    
+    
+    OSCProcessor oscProcessor;
+    
     //==============================================================================
     const String getName() const override;
     void prepareToPlay (double, int) override;
@@ -394,8 +418,11 @@ private:
     void buildRenderingSequence();
     bool isAnInputTo (uint32 possibleInputId, uint32 possibleDestinationId, int recursionCheck) const;
 
+
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioProcessorGraph)
 };
 
+//==============================================================================
 
 #endif   // JUCE_AUDIOPROCESSORGRAPH_H_INCLUDED

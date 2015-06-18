@@ -42,6 +42,7 @@ FilterGraph::FilterGraph (AudioPluginFormatManager& formatManager_)
     InternalPluginFormat internalFormat;
 
     inputId = addFilter (internalFormat.getDescriptionFor (InternalPluginFormat::midiInputFilter),   0.25f, 0.1f, true);
+    oscId = addFilter (internalFormat.getDescriptionFor (InternalPluginFormat::oscInputFilter),   0.75f, 0.1f, true);
     outputId = addFilter (internalFormat.getDescriptionFor (InternalPluginFormat::audioOutputFilter), 0.5f,  0.9f, true);
 
     setChangedFlag (false);

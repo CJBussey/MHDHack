@@ -80,6 +80,7 @@ class AudioProcessor;
 #include "processors/juce_AudioProcessor.h"
 #include "processors/juce_PluginDescription.h"
 #include "processors/juce_AudioPluginInstance.h"
+#include "../../../Source/OSCProcessor.h"
 #include "processors/juce_AudioProcessorGraph.h"
 #include "processors/juce_GenericAudioProcessorEditor.h"
 #include "format/juce_AudioPluginFormat.h"

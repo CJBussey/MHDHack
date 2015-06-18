@@ -1314,6 +1314,7 @@ void AudioProcessorGraph::processBlock (AudioSampleBuffer& buffer, MidiBuffer& m
 
     midiMessages.clear();
     midiMessages.addEvents (currentMidiOutputBuffer, 0, buffer.getNumSamples(), 0);
+    midiMessages.addEvents (*currentOscInputBuffer, 0, buffer.getNumSamples(), 0);
 }
 
 const String AudioProcessorGraph::getInputChannelName (int channelIndex) const
@@ -1427,8 +1428,8 @@ void AudioProcessorGraph::AudioGraphIOProcessor::processBlock (AudioSampleBuffer
             break;
             
         case oscInputNode:
-            // TODO: DO
-            
+            graph->oscProcessor.processBlock(*graph->currentOscInputBuffer, 0);
+            midiMessages.addEvents (*graph->currentOscInputBuffer, 0, buffer.getNumSamples(), 0);
             break;
 
         default:
