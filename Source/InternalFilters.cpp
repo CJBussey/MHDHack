@@ -44,6 +44,11 @@ InternalPluginFormat::InternalPluginFormat()
         AudioProcessorGraph::AudioGraphIOProcessor p (AudioProcessorGraph::AudioGraphIOProcessor::midiInputNode);
         p.fillInPluginDescription (midiInDesc);
     }
+    
+    {
+        AudioProcessorGraph::AudioGraphIOProcessor p (AudioProcessorGraph::AudioGraphIOProcessor::oscInputNode);
+        p.fillInPluginDescription (oscInDesc);
+    }
 }
 
 AudioPluginInstance* InternalPluginFormat::createInstanceFromDescription (const PluginDescription& desc,
@@ -57,6 +62,9 @@ AudioPluginInstance* InternalPluginFormat::createInstanceFromDescription (const 
 
     if (desc.name == midiInDesc.name)
         return new AudioProcessorGraph::AudioGraphIOProcessor (AudioProcessorGraph::AudioGraphIOProcessor::midiInputNode);
+    
+    if (desc.name == oscInDesc.name)
+        return new AudioProcessorGraph::AudioGraphIOProcessor (AudioProcessorGraph::AudioGraphIOProcessor::oscInputNode);
 
     return 0;
 }
@@ -68,6 +76,7 @@ const PluginDescription* InternalPluginFormat::getDescriptionFor (const Internal
         case audioInputFilter:      return &audioInDesc;
         case audioOutputFilter:     return &audioOutDesc;
         case midiInputFilter:       return &midiInDesc;
+        case oscInputFilter:        return &oscInDesc;
         default:                    break;
     }
 

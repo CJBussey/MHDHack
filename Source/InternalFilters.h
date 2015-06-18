@@ -45,6 +45,7 @@ public:
         audioInputFilter = 0,
         audioOutputFilter,
         midiInputFilter,
+        oscInputFilter,
 
         endOfFilterTypes
     };
@@ -70,6 +71,7 @@ private:
     PluginDescription audioInDesc;
     PluginDescription audioOutDesc;
     PluginDescription midiInDesc;
+    PluginDescription oscInDesc;
 };
 
 

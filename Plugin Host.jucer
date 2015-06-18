@@ -40,6 +40,9 @@
     </XCODE_MAC>
   </EXPORTFORMATS>
   <MAINGROUP id="YdWL7hi7p" name="Plugin Host">
+    <FILE id="ht04ny" name="OSCProcessor.cpp" compile="1" resource="0"
+          file="Source/OSCProcessor.cpp"/>
+    <FILE id="jELSep" name="OSCProcessor.h" compile="0" resource="0" file="Source/OSCProcessor.h"/>
     <FILE id="8tLeuntR4" name="FilterGraph.cpp" compile="1" resource="0"
           file="Source/FilterGraph.cpp"/>
     <FILE id="auGSxnlTU" name="FilterGraph.h" compile="0" resource="0"
@@ -65,19 +68,19 @@
                JUCE_PLUGINHOST_VST="enabled" JUCE_PLUGINHOST_AU="enabled" JUCE_WEB_BROWSER="disabled"
                JUCE_PLUGINHOST_VST3="enabled"/>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1"/>
-    <MODULE id="juce_audio_devices" showAllCode="1"/>
-    <MODULE id="juce_audio_formats" showAllCode="1"/>
-    <MODULE id="juce_audio_processors" showAllCode="1"/>
-    <MODULE id="juce_audio_utils" showAllCode="1"/>
-    <MODULE id="juce_core" showAllCode="1"/>
-    <MODULE id="juce_cryptography" showAllCode="1"/>
-    <MODULE id="juce_data_structures" showAllCode="1"/>
-    <MODULE id="juce_events" showAllCode="1"/>
-    <MODULE id="juce_graphics" showAllCode="1"/>
-    <MODULE id="juce_gui_basics" showAllCode="1"/>
-    <MODULE id="juce_gui_extra" showAllCode="1"/>
-    <MODULE id="juce_opengl" showAllCode="1"/>
-    <MODULE id="juce_video" showAllCode="1"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="1"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="1"/>
   </MODULES>
 </JUCERPROJECT>
