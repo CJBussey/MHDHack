@@ -926,7 +926,7 @@ void GraphEditorPanel::updateComponents()
             addAndMakeVisible (comp);
             comp->update();
             
-            if (f->nodeId != graph.inputId && f->nodeId != graph.outputId)
+            if (f->nodeId != graph.inputId && f->nodeId != graph.outputId && f->nodeId != graph.oscId)
             {
                 comp->openPluginWindow();
             }

@@ -27,6 +27,8 @@
 
 #include "FilterGraph.h"
 #include "GraphEditorPanel.h"
+#include "ReceiveOSC.h"
+
 
 
 //==============================================================================
@@ -85,6 +87,7 @@ public:
     GraphDocumentComponent* getGraphEditor() const;
 
 private:
+        
     //==============================================================================
     AudioDeviceManager deviceManager;
     AudioPluginFormatManager formatManager;
@@ -95,6 +98,8 @@ private:
 
     class PluginListWindow;
     ScopedPointer <PluginListWindow> pluginListWindow;
+
+    ReceiveOSC m_receiveOSC;
 
     void showAudioSettings();
 

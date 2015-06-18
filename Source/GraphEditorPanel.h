@@ -62,7 +62,7 @@ public:
                              const MouseEvent& e);
     void dragConnector (const MouseEvent& e);
     void endDraggingConnector (const MouseEvent& e);
-
+    
     //==============================================================================
 private:
     FilterGraph& graph;
@@ -94,6 +94,8 @@ public:
 
     //==============================================================================
     void resized();
+    
+    AudioProcessorGraph& getAudioProcessorGraph() { return graph.getGraph(); }
 
 private:
     //==============================================================================

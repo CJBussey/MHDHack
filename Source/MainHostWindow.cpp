@@ -26,7 +26,8 @@
 #include "MainHostWindow.h"
 #include "InternalFilters.h"
 
-#define SHOW_WINDOW true
+
+#define SHOW_WINDOW false
 
 
 //==============================================================================
@@ -68,6 +69,7 @@ public:
 
 private:
     MainHostWindow& owner;
+
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PluginListWindow)
 };
@@ -119,6 +121,14 @@ MainHostWindow::MainHostWindow()
    #endif
 
     getCommandManager().setFirstCommandTarget (this);
+    
+    auto graphEditor = getGraphEditor();
+    if (graphEditor)
+    {
+        graphEditor->getAudioProcessorGraph().oscProcessor.setOSCEventQueue(m_receiveOSC.getOSCEventQueue());
+        m_receiveOSC.startThread();
+    }
+
 }
 
 MainHostWindow::~MainHostWindow()

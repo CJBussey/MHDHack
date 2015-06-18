@@ -101,6 +101,7 @@ uint32 FilterGraph::addFilter (const PluginDescription* desc, double x, double y
             {
                 pluginNodeId = node->nodeId;
                 addConnection(inputId, 4096, pluginNodeId, 4096);
+                addConnection(oscId, 4096, pluginNodeId, 4096);
                 
                 for (int i = 0; i < 2; ++i)
                 {
