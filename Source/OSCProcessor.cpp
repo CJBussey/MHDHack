@@ -11,24 +11,32 @@
 
 void OSCProcessor::processBlock(juce::MidiBuffer& rMidiMessages, int blockSize)
 {
-    // @TODO: DO IT!
-    
-    while (0 /*getNextOSCEvent(rFrequency, rTimeStamp)*/)
+    if (!m_queue)
     {
-        int midiNote = frequencyToMidiNote(0 /*rFrequency*/);
+        return;
+    }
+    
+    size_t size = m_queue->size();
+
+    for (size_t i = 0; i < size; ++i)
+    {
+        PitchEvent evt = m_queue->front();
+        m_queue->pop();
+        
+        int midiNote = frequencyToMidiNote(evt.pitch);
         
         if (midiNote != m_midiNote)
         {
-            if (m_midiNote != 1)
+            if (m_midiNote != -1)
             {
                 MidiMessage m = MidiMessage::noteOff(1, m_midiNote);
-                rMidiMessages.addEvent(&m, 0/*rFrequency*/, 0/*rTimeStamp*/);
+                rMidiMessages.addEvent(m, i);
             }
             
             if (midiNote != -1)
             {
-                MidiMessage m = MidiMessage::noteOn(1, m_midiNote, (uint8)100 /*fixed*/);
-                rMidiMessages.addEvent(&m, 0/*rFrequency*/, 0/*rTimeStamp*/);
+                MidiMessage m = MidiMessage::noteOn(1, midiNote, (uint8)127 /*fixed*/);
+                rMidiMessages.addEvent(m, i);
             }
             
             m_midiNote = midiNote;
