@@ -18,7 +18,7 @@ class OSCProcessor
     
 public:
     
-    OSCProcessor() : m_midiNote(0) {}
+    OSCProcessor() : m_midiNote(-1) {}
     
     void processBlock(juce::MidiBuffer& rMidiMessages, int blockSize);
     
