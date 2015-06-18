@@ -7,3 +7,10 @@
 //
 
 #include "OSCProcessor.h"
+
+void OSCProcessor::processBlock(MidiBuffer& rMidiMessages)
+{
+    //MidiMessage();
+    
+    
+}
