@@ -11,7 +11,9 @@
 
 void OSCProcessor::processBlock(juce::MidiBuffer& rMidiMessages, int blockSize)
 {
-    while (1 /*getNextOSCEvent(rFrequency, rTimeStamp)*/)
+    // @TODO: DO IT!
+    
+    while (0 /*getNextOSCEvent(rFrequency, rTimeStamp)*/)
     {
         int midiNote = frequencyToMidiNote(0 /*rFrequency*/);
         
