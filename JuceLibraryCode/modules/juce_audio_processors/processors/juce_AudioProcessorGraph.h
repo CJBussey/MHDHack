@@ -39,6 +39,14 @@
     To play back a graph through an audio device, you might want to use an
     AudioProcessorPlayer object.
 */
+
+}
+
+#include "../../Source/OSCProcessor.h"
+
+namespace juce
+{
+
 class JUCE_API  AudioProcessorGraph   : public AudioProcessor,
                                         private AsyncUpdater
 {
@@ -341,51 +349,6 @@ public:
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioGraphIOProcessor)
     };
-
-    class OSCProcessor
-    {
-        
-    public:
-        
-        OSCProcessor() : m_midiNote(0) {}
-        
-        void processBlock(MidiBuffer& rMidiMessages, int blockSize)
-        {
-            while (1 /*getNextOSCEvent(rFrequency, rTimeStamp)*/)
-            {
-                int midiNote = frequencyToMidiNote(0 /*rFrequency*/);
-                
-                if (midiNote != m_midiNote)
-                {
-                    if (m_midiNote != 1)
-                    {
-                        MidiMessage m = MidiMessage::noteOff(1, m_midiNote);
-                        rMidiMessages.addEvent(&m, 0/*rFrequency*/, 0/*rTimeStamp*/);
-                    }
-                        
-                    if (midiNote != -1)
-                    {
-                        MidiMessage m = MidiMessage::noteOn(1, m_midiNote, (uint8)100 /*fixed*/);
-                        rMidiMessages.addEvent(&m, 0/*rFrequency*/, 0/*rTimeStamp*/);
-                    }
-                    
-                    m_midiNote = midiNote;
-                }
-            }
-        }
-        
-    private:
-        int m_midiNote;
-        
-        int frequencyToMidiNote(float frequency)
-        {
-            return (frequency > 8.f /*C1*/) ? round(69 + 12 * log2(frequency/440.f)) : -1;
-        }
-        
-    };
-    
-    
-    OSCProcessor oscProcessor;
     
     //==============================================================================
     const String getName() const override;
@@ -416,6 +379,8 @@ public:
     void changeProgramName (int, const String&) override    { }
     void getStateInformation (juce::MemoryBlock&) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
+
+    OSCProcessor oscProcessor;
 
 private:
     //==============================================================================
