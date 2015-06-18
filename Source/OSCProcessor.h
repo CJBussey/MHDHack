@@ -18,6 +18,7 @@ public:
     OSCProcessor() {};
     
     void processBlock(MidiBuffer& rMidiMessages);
+    int frequencyToMidiNote(float frequency);
     
 };
 
