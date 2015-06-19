@@ -189,20 +189,6 @@ PopupMenu MainHostWindow::getMenuForIndex (int topLevelMenuIndex, const String& 
 
     if (topLevelMenuIndex == 0)
     {
-        // "File" menu
-        menu.addCommandItem (&getCommandManager(), CommandIDs::open);
-
-        RecentlyOpenedFilesList recentFiles;
-        recentFiles.restoreFromString (getAppProperties().getUserSettings()
-                                            ->getValue ("recentFilterGraphFiles"));
-
-        PopupMenu recentFilesMenu;
-        recentFiles.createPopupMenuItems (recentFilesMenu, 100, true, true);
-        menu.addSubMenu ("Open recent file", recentFilesMenu);
-
-        menu.addCommandItem (&getCommandManager(), CommandIDs::save);
-        menu.addCommandItem (&getCommandManager(), CommandIDs::saveAs);
-        menu.addSeparator();
         menu.addCommandItem (&getCommandManager(), StandardApplicationCommandIDs::quit);
     }
     else if (topLevelMenuIndex == 1)
@@ -211,8 +197,6 @@ PopupMenu MainHostWindow::getMenuForIndex (int topLevelMenuIndex, const String& 
         PopupMenu pluginsMenu;
         addPluginsToMenu (pluginsMenu);
         menu.addSubMenu ("Create plugin", pluginsMenu);
-        menu.addSeparator();
-        menu.addItem (250, "Delete all plugins");
     }
     else if (topLevelMenuIndex == 2)
     {
@@ -230,9 +214,6 @@ PopupMenu MainHostWindow::getMenuForIndex (int topLevelMenuIndex, const String& 
 
         menu.addSeparator();
         menu.addCommandItem (&getCommandManager(), CommandIDs::showAudioSettings);
-
-        menu.addSeparator();
-        menu.addCommandItem (&getCommandManager(), CommandIDs::aboutBox);
     }
 
     return menu;
@@ -289,11 +270,6 @@ void MainHostWindow::createPlugin (const PluginDescription* desc, int x, int y)
 
 void MainHostWindow::addPluginsToMenu (PopupMenu& m) const
 {
-    for (int i = 0; i < internalTypes.size(); ++i)
-        m.addItem (i + 1, internalTypes.getUnchecked(i)->name);
-
-    m.addSeparator();
-
     knownPluginList.addToMenu (m, pluginSortMethod);
 }
 

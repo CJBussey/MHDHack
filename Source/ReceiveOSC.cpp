@@ -43,8 +43,6 @@ void ReceiveOSC::ProcessMessage(const osc::ReceivedMessage& m,
 //    event.timestamp = std::chrono::time_point_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now()));;
     event.pitch = pitch;
     
-    std::cout << pitch << std::endl;
-    
     m_pitches->push(event);
     
     

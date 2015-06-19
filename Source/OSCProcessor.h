@@ -25,12 +25,14 @@ public:
     
     void processBlock(juce::MidiBuffer& rMidiMessages, int blockSize);
     void setOSCEventQueue(const std::shared_ptr<std::queue<PitchEvent>> queue) { m_queue = queue; }
+    void setFs(float fs) { m_fs = fs; }
     
 private:
     int m_midiNote = -1;
     
     int frequencyToMidiNote(float frequency);
     std::shared_ptr<std::queue<PitchEvent>> m_queue;
+    float m_fs;
     
 };
 

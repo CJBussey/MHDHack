@@ -17,6 +17,12 @@ void OSCProcessor::processBlock(juce::MidiBuffer& rMidiMessages, int blockSize)
     }
     
     size_t size = m_queue->size();
+    
+    int refTimestamp;
+    if (size)
+    {
+        refTimestamp = m_queue->front().timestamp;
+    }
 
     for (size_t i = 0; i < size; ++i)
     {
@@ -27,16 +33,18 @@ void OSCProcessor::processBlock(juce::MidiBuffer& rMidiMessages, int blockSize)
         
         if (midiNote != m_midiNote)
         {
+            int sampleNumber = ((evt.timestamp - refTimestamp) / 1e-9 * m_fs);
+            
             if (m_midiNote != -1)
             {
                 MidiMessage m = MidiMessage::noteOff(1, m_midiNote);
-                rMidiMessages.addEvent(m, i);
+                rMidiMessages.addEvent(m, sampleNumber);
             }
             
             if (midiNote != -1)
             {
                 MidiMessage m = MidiMessage::noteOn(1, midiNote, (uint8)127 /*fixed*/);
-                rMidiMessages.addEvent(m, i);
+                rMidiMessages.addEvent(m, sampleNumber);
             }
             
             m_midiNote = midiNote;
