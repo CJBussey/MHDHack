@@ -42,7 +42,7 @@ public:
         // initialise our settings file..
 
         PropertiesFile::Options options;
-        options.applicationName     = "Juce Audio Plugin Host";
+        options.applicationName     = "Tibetan Synths";
         options.filenameSuffix      = "settings";
         options.osxLibrarySubFolder = "Preferences";
 
@@ -81,7 +81,7 @@ public:
             JUCEApplicationBase::quit();
     }
 
-    const String getApplicationName() override       { return "OSC Receiver"; }
+    const String getApplicationName() override       { return "Tibetan Synths"; }
     const String getApplicationVersion() override    { return ProjectInfo::versionString; }
     bool moreThanOneInstanceAllowed() override       { return true; }
 
