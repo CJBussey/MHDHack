@@ -14,7 +14,7 @@
               includeBinaryInAppConfig="1">
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               objCExtraSuffix="M73TRi" vst3Folder="~/SDKs/VST3" externalLibraries="oscpack"
+               objCExtraSuffix="M73TRi" vst3Folder="~/SDKs/VST3 SDK" externalLibraries="oscpack"
                extraLinkerFlags="-L/Users/balazsbela/MHD/MHDHack/oscpack">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Plugin Host"
@@ -25,20 +25,20 @@
                        libraryPath="/Users/balazsbela/MHD/MHDHack/oscpack" headerPath="/Users/balazsbela/MHD/MHDHack/oscpack"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_video" path="JUCE/modules"/>
-        <MODULEPATH id="juce_opengl" path="JUCE/modules"/>
-        <MODULEPATH id="juce_gui_extra" path="JUCE/modules"/>
-        <MODULEPATH id="juce_gui_basics" path="JUCE/modules"/>
-        <MODULEPATH id="juce_graphics" path="JUCE/modules"/>
-        <MODULEPATH id="juce_events" path="JUCE/modules"/>
-        <MODULEPATH id="juce_data_structures" path="JUCE/modules"/>
-        <MODULEPATH id="juce_cryptography" path="JUCE/modules"/>
-        <MODULEPATH id="juce_core" path="JUCE/modules"/>
-        <MODULEPATH id="juce_audio_utils" path="JUCE/modules"/>
-        <MODULEPATH id="juce_audio_processors" path="JUCE/modules"/>
-        <MODULEPATH id="juce_audio_formats" path="JUCE/modules"/>
-        <MODULEPATH id="juce_audio_devices" path="JUCE/modules"/>
-        <MODULEPATH id="juce_audio_basics" path="JUCE/modules"/>
+        <MODULEPATH id="juce_video" path="../../JUCE"/>
+        <MODULEPATH id="juce_opengl" path="../../JUCE"/>
+        <MODULEPATH id="juce_gui_extra" path="../../JUCE"/>
+        <MODULEPATH id="juce_gui_basics" path="../../JUCE"/>
+        <MODULEPATH id="juce_graphics" path="../../JUCE"/>
+        <MODULEPATH id="juce_events" path="../../JUCE"/>
+        <MODULEPATH id="juce_data_structures" path="../../JUCE"/>
+        <MODULEPATH id="juce_cryptography" path="../../JUCE"/>
+        <MODULEPATH id="juce_core" path="../../JUCE"/>
+        <MODULEPATH id="juce_audio_utils" path="../../JUCE"/>
+        <MODULEPATH id="juce_audio_processors" path="../../JUCE"/>
+        <MODULEPATH id="juce_audio_formats" path="../../JUCE"/>
+        <MODULEPATH id="juce_audio_devices" path="../../JUCE"/>
+        <MODULEPATH id="juce_audio_basics" path="../../JUCE"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
