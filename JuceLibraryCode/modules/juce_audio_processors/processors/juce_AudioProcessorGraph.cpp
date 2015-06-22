@@ -896,8 +896,7 @@ void AudioProcessorGraph::Node::setParentGraph (AudioProcessorGraph* const graph
 AudioProcessorGraph::AudioProcessorGraph()
     : lastNodeId (0),
       currentAudioInputBuffer (nullptr),
-      currentMidiInputBuffer (nullptr),
-      currentOscInputBuffer(nullptr)
+      currentMidiInputBuffer (nullptr)
 {
 }
 
@@ -905,8 +904,6 @@ AudioProcessorGraph::~AudioProcessorGraph()
 {
     clearRenderingSequence();
     clear();
-    delete currentOscInputBuffer;
-    currentOscInputBuffer = nullptr;
 }
 
 const String AudioProcessorGraph::getName() const
@@ -1246,7 +1243,6 @@ void AudioProcessorGraph::prepareToPlay (double /*sampleRate*/, int estimatedSam
     currentAudioOutputBuffer.setSize (jmax (1, getNumOutputChannels()), estimatedSamplesPerBlock);
     currentMidiInputBuffer = nullptr;
     currentMidiOutputBuffer.clear();
-    currentOscInputBuffer = new MidiBuffer();
 
     clearRenderingSequence();
     buildRenderingSequence();
@@ -1298,7 +1294,6 @@ void AudioProcessorGraph::processBlock (AudioSampleBuffer& buffer, MidiBuffer& m
     currentAudioOutputBuffer.setSize (jmax (1, buffer.getNumChannels()), numSamples);
     currentAudioOutputBuffer.clear();
     currentMidiInputBuffer = &midiMessages;
-    currentOscInputBuffer->clear();
     currentMidiOutputBuffer.clear();
 
     for (int i = 0; i < renderingOps.size(); ++i)
@@ -1314,7 +1309,6 @@ void AudioProcessorGraph::processBlock (AudioSampleBuffer& buffer, MidiBuffer& m
 
     midiMessages.clear();
     midiMessages.addEvents (currentMidiOutputBuffer, 0, buffer.getNumSamples(), 0);
-    midiMessages.addEvents (*currentOscInputBuffer, 0, buffer.getNumSamples(), 0);
 }
 
 const String AudioProcessorGraph::getInputChannelName (int channelIndex) const
@@ -1355,7 +1349,6 @@ const String AudioProcessorGraph::AudioGraphIOProcessor::getName() const
         case audioInputNode:    return "Audio Input";
         case midiOutputNode:    return "Midi Output";
         case midiInputNode:     return "Midi Input";
-        case oscInputNode:      return "Osc Input";
         default:                break;
     }
 
@@ -1426,11 +1419,6 @@ void AudioProcessorGraph::AudioGraphIOProcessor::processBlock (AudioSampleBuffer
         case midiInputNode:
             midiMessages.addEvents (*graph->currentMidiInputBuffer, 0, buffer.getNumSamples(), 0);
             break;
-            
-        case oscInputNode:
-            graph->oscProcessor.processBlock(*graph->currentOscInputBuffer, 0);
-            midiMessages.addEvents (*graph->currentOscInputBuffer, 0, buffer.getNumSamples(), 0);
-            break;
 
         default:
             break;
@@ -1454,7 +1442,7 @@ bool AudioProcessorGraph::AudioGraphIOProcessor::acceptsMidi() const
 
 bool AudioProcessorGraph::AudioGraphIOProcessor::producesMidi() const
 {
-    return type == midiInputNode || type == oscInputNode;
+    return type == midiInputNode;
 }
 
 const String AudioProcessorGraph::AudioGraphIOProcessor::getInputChannelName (int channelIndex) const
@@ -1463,7 +1451,6 @@ const String AudioProcessorGraph::AudioGraphIOProcessor::getInputChannelName (in
     {
         case audioOutputNode:   return "Output " + String (channelIndex + 1);
         case midiOutputNode:    return "Midi Output";
-        case oscInputNode:      return "OSC output";
         default:                break;
     }
 
@@ -1476,7 +1463,6 @@ const String AudioProcessorGraph::AudioGraphIOProcessor::getOutputChannelName (i
     {
         case audioInputNode:    return "Input " + String (channelIndex + 1);
         case midiInputNode:     return "Midi Input";
-        case oscInputNode:     return "OSC Input";
         default:                break;
     }
 

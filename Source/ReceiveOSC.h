@@ -10,7 +10,7 @@
 
 
 // OSC send includes
-#include <osc/OscOutboundPacketStream.h>
+#include "osc/OscOutboundPacketStream.h"
 #include "ip/IpEndpointName.h"
 
 // OSC receive includes

@@ -25,6 +25,7 @@
 #ifndef JUCE_AUDIOPROCESSORGRAPH_H_INCLUDED
 #define JUCE_AUDIOPROCESSORGRAPH_H_INCLUDED
 
+
 //==============================================================================
 /**
     A type of AudioProcessor which plays back a graph of other AudioProcessors.
@@ -39,14 +40,6 @@
     To play back a graph through an audio device, you might want to use an
     AudioProcessorPlayer object.
 */
-
-}
-
-#include "../../Source/OSCProcessor.h"
-
-namespace juce
-{
-
 class JUCE_API  AudioProcessorGraph   : public AudioProcessor,
                                         private AsyncUpdater
 {
@@ -289,11 +282,9 @@ public:
             midiInputNode,      /**< In this mode, the processor has a midi output which
                                      delivers the same midi data that is arriving at its
                                      parent graph. */
-            midiOutputNode,      /**< In this mode, the processor has a midi input and
+            midiOutputNode      /**< In this mode, the processor has a midi input and
                                      any data sent to it will be passed out of the parent
                                      graph. */
-            
-            oscInputNode
         };
 
         //==============================================================================
@@ -349,7 +340,7 @@ public:
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioGraphIOProcessor)
     };
-    
+
     //==============================================================================
     const String getName() const override;
     void prepareToPlay (double, int) override;
@@ -380,8 +371,6 @@ public:
     void getStateInformation (juce::MemoryBlock&) override;
     void setStateInformation (const void* data, int sizeInBytes) override;
 
-    OSCProcessor oscProcessor;
-
 private:
     //==============================================================================
     ReferenceCountedArray<Node> nodes;
@@ -396,18 +385,14 @@ private:
     AudioSampleBuffer currentAudioOutputBuffer;
     MidiBuffer* currentMidiInputBuffer;
     MidiBuffer currentMidiOutputBuffer;
-    MidiBuffer* currentOscInputBuffer;
 
     void handleAsyncUpdate() override;
     void clearRenderingSequence();
     void buildRenderingSequence();
     bool isAnInputTo (uint32 possibleInputId, uint32 possibleDestinationId, int recursionCheck) const;
 
-
-
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AudioProcessorGraph)
 };
 
-//==============================================================================
 
 #endif   // JUCE_AUDIOPROCESSORGRAPH_H_INCLUDED
