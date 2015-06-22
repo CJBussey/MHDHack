@@ -13,32 +13,29 @@
               jucerVersion="3.1.1" companyName="Raw Material Software Ltd."
               includeBinaryInAppConfig="1">
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
-               objCExtraSuffix="M73TRi" vst3Folder="~/SDKs/VST3 SDK" externalLibraries="oscpack"
-               extraLinkerFlags="">
+    <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/VST3" rtasFolder="~/SDKs/PT_80_SDK"
+               objCExtraSuffix="M73TRi" vst3Folder="~/SDKs/VST3">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Plugin Host"
-                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       libraryPath="/Users/balazsbela/MHD/MHDHack/oscpack" headerPath="/Users/balazsbela/MHD/MHDHack/oscpack"/>
+                       osxSDK="default" osxCompatibility="default" osxArchitecture="default"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="2" targetName="Plugin Host"
-                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"
-                       libraryPath="/Users/balazsbela/MHD/MHDHack/oscpack" headerPath="/Users/balazsbela/MHD/MHDHack/oscpack"/>
+                       osxSDK="default" osxCompatibility="10.5 SDK" osxArchitecture="default"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
-        <MODULEPATH id="juce_video" path="../../JUCE"/>
-        <MODULEPATH id="juce_opengl" path="../../JUCE"/>
-        <MODULEPATH id="juce_gui_extra" path="../../JUCE"/>
-        <MODULEPATH id="juce_gui_basics" path="../../JUCE"/>
-        <MODULEPATH id="juce_graphics" path="../../JUCE"/>
-        <MODULEPATH id="juce_events" path="../../JUCE"/>
-        <MODULEPATH id="juce_data_structures" path="../../JUCE"/>
-        <MODULEPATH id="juce_cryptography" path="../../JUCE"/>
-        <MODULEPATH id="juce_core" path="../../JUCE"/>
-        <MODULEPATH id="juce_audio_utils" path="../../JUCE"/>
-        <MODULEPATH id="juce_audio_processors" path="../../JUCE"/>
-        <MODULEPATH id="juce_audio_formats" path="../../JUCE"/>
-        <MODULEPATH id="juce_audio_devices" path="../../JUCE"/>
-        <MODULEPATH id="juce_audio_basics" path="../../JUCE"/>
+        <MODULEPATH id="juce_video" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="/Users/Carl/Documents/Projects/JuceGit/JUCE/modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
   </EXPORTFORMATS>
