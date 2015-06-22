@@ -15,7 +15,7 @@
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" vstFolder="~/SDKs/vstsdk2.4" rtasFolder="~/SDKs/PT_80_SDK"
                objCExtraSuffix="M73TRi" vst3Folder="~/SDKs/VST3 SDK" externalLibraries="oscpack"
-               extraLinkerFlags="-L/Users/balazsbela/MHD/MHDHack/oscpack">
+               extraLinkerFlags="">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="Plugin Host"
                        osxSDK="default" osxCompatibility="default" osxArchitecture="default"
